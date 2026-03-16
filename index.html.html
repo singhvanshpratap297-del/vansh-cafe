@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vansh Pratap Singh Cafe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--bg:#06080f;--gold:#FFD700;--gold2:#f59e0b;--violet:#7c3aed;--vl:#a855f7;--card:#0d1117;--text:#e2e8f0;--dim:#94a3b8;--gg:0 0 25px #FFD700bb,0 0 50px #FFD70040;--green:#10b981;}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Rajdhani',sans-serif;overflow-x:hidden;}
+
+/* === PREMIUM 2-COLOR BACKGROUND (Deep Black + Gold) === */
+body::before{
+  content:'';position:fixed;inset:0;z-index:-2;
+  background:
+    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(255,215,0,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 80% at 100% 100%, rgba(255,193,7,0.04) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 40% at 0% 60%, rgba(255,215,0,0.035) 0%, transparent 50%),
+    #06080f;
+}
+body::after{
+  content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background-image:
+    repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(255,215,0,0.012) 60px, rgba(255,215,0,0.012) 61px),
+    repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(255,215,0,0.012) 60px, rgba(255,215,0,0.012) 61px);
+}
+
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:#06080f}::-webkit-scrollbar-thumb{background:linear-gradient(var(--gold),rgba(255,193,7,0.3));border-radius:3px}
+
+nav{position:fixed;top:0;width:100%;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:13px 5%;background:rgba(6,8,15,.96);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,215,0,.1);box-shadow:0 1px 40px rgba(0,0,0,.8);}
+.nav-logo{font-family:'Cinzel Decorative',serif;font-size:.95rem;color:var(--gold);text-shadow:var(--gg);letter-spacing:2px;}
+.nav-logo em{color:var(--vl);font-style:normal}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:var(--dim);text-decoration:none;font-size:.82rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;transition:color .3s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--gold);transition:width .3s;}
+.nav-links a:hover{color:var(--gold)}.nav-links a:hover::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:11px}
+.nav-ph{color:var(--gold);font-size:.79rem;font-weight:700;letter-spacing:1px;border:1px solid rgba(255,215,0,.3);padding:6px 13px;border-radius:20px;background:rgba(255,215,0,.05);}
+.nav-cta{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;border:none;padding:9px 20px;border-radius:30px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:1.5px;cursor:pointer;transition:.3s;}
+.nav-cta:hover{transform:scale(1.05);box-shadow:var(--gg)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer}.hbg span{width:25px;height:2px;background:var(--gold);border-radius:2px}
+
+/* HERO */
+.hero{position:relative;height:100vh;min-height:600px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 0.55s cubic-bezier(0.4,0,0.2,1);}
+.hero-slide.active{opacity:1;}
+.hero-slide img{width:100%;height:100%;object-fit:cover;animation:kb 2.2s ease-out;filter:brightness(.3) saturate(1.5);}
+@keyframes kb{from{transform:scale(1.07)}to{transform:scale(1)}}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,8,15,.45) 0%,rgba(6,8,15,.15) 35%,rgba(6,8,15,.68) 75%,rgba(6,8,15,.97) 100%);pointer-events:none;}
+.hero-content{position:relative;z-index:10;text-align:center;padding:0 24px;max-width:950px;animation:hUp 1.3s ease both;}
+@keyframes hUp{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:9px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.34);color:var(--gold);padding:7px 20px;border-radius:30px;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;animation:gp 3s infinite;}
+@keyframes gp{0%,100%{box-shadow:0 0 0 rgba(255,215,0,0)}50%{box-shadow:0 0 20px rgba(255,215,0,.3)}}
+.ndeco{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:13px;}
+.nline{flex:1;max-width:120px;height:1px;background:linear-gradient(to right,transparent,rgba(255,215,0,.54));}
+.nline.r{background:linear-gradient(to left,transparent,rgba(255,215,0,.54))}
+.diam{width:9px;height:9px;background:var(--gold);transform:rotate(45deg);box-shadow:var(--gg);animation:dp 2s infinite;}
+@keyframes dp{0%,100%{transform:rotate(45deg) scale(1)}50%{transform:rotate(45deg) scale(1.5)}}
+.hero-name{font-family:'Cinzel Decorative',serif;font-size:clamp(1.8rem,5.2vw,4.7rem);line-height:1.15;color:#fff;text-shadow:0 0 60px rgba(0,0,0,.9),0 4px 28px rgba(0,0,0,.7);margin-bottom:10px;}
+.hero-name .gw{color:var(--gold);text-shadow:var(--gg),0 4px 28px rgba(0,0,0,.7);display:block;}
+.hero-tag{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(1rem,1.9vw,1.32rem);color:rgba(226,232,240,.82);max-width:630px;margin:0 auto 32px;line-height:1.65;}
+.hbtns{display:flex;gap:13px;justify-content:center;flex-wrap:wrap}
+.btg{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;border:none;padding:13px 36px;border-radius:40px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;cursor:pointer;transition:.3s;text-transform:uppercase;}
+.btg:hover{transform:translateY(-4px);box-shadow:var(--gg)}
+.bto{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.25);padding:13px 36px;border-radius:40px;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:1rem;letter-spacing:2px;cursor:pointer;transition:.3s;text-transform:uppercase;}
+.bto:hover{border-color:var(--vl);color:var(--vl)}
+.slabel{position:absolute;bottom:112px;right:5%;z-index:20;font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.7rem,1.2vw,.88rem);color:rgba(255,215,0,.7);letter-spacing:3px;text-transform:uppercase;writing-mode:vertical-rl;transition:opacity .5s;}
+.sarrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.25);color:var(--gold);width:50px;height:50px;border-radius:50%;font-size:1.6rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.3s;z-index:20;}
+.sarrow:hover{background:rgba(255,215,0,.88);color:#0a0f1e}.sarrow.prev{left:3%}.sarrow.next{right:3%}
+.sdots{position:absolute;bottom:33px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:8px;z-index:20;}
+.dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.27);cursor:pointer;transition:.4s;}
+.dot.active{background:var(--gold);width:22px;border-radius:4px;box-shadow:var(--gg)}
+.scnt{position:absolute;bottom:36px;right:5%;z-index:20;font-family:'Playfair Display',serif;font-size:1rem;color:rgba(255,215,0,.58);letter-spacing:2px;}
+.scnt strong{color:var(--gold);font-size:1.38rem;text-shadow:var(--gg)}
+.spbar{position:absolute;bottom:0;left:0;width:100%;height:3px;z-index:20;background:rgba(255,255,255,.07);}
+.spfill{height:100%;background:linear-gradient(to right,var(--violet),var(--gold));transition:none;}
+.srhint{position:absolute;bottom:50px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:5px;color:rgba(255,215,0,.44);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;z-index:20;animation:rh 2s infinite;}
+.srhint::after{content:'';width:1px;height:30px;background:linear-gradient(var(--gold),transparent);}
+@keyframes rh{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
+
+/* STATS */
+.sbar{display:flex;justify-content:center;flex-wrap:wrap;background:linear-gradient(135deg,rgba(255,215,0,.05),rgba(6,8,15,.95));border-top:1px solid rgba(255,215,0,.12);border-bottom:1px solid rgba(255,215,0,.12);padding:25px 5%;position:relative;}
+.sbar::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 100% at 50% 50%,rgba(255,215,0,.04),transparent);pointer-events:none;}
+.si{flex:1;min-width:135px;text-align:center;padding:13px 16px;position:relative;}
+.si:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.07);}
+.sn{font-family:'Playfair Display',serif;font-size:2.3rem;color:var(--gold);text-shadow:var(--gg);display:block;margin-bottom:3px;}
+.sl{color:var(--dim);font-size:.74rem;letter-spacing:2px;text-transform:uppercase;}
+
+/* SECTION HEADER */
+.shdr{text-align:center;padding:72px 5% 13px;}
+.sey{color:var(--gold);font-size:.73rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:10px;display:block;}
+.st{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.8vw,2.8rem);background:linear-gradient(135deg,#fff 40%,var(--gold));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.sdiv{width:76px;height:3px;margin:12px auto 0;background:linear-gradient(to right,var(--violet),var(--gold));border-radius:2px;}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;padding:32px 5% 5px;}
+.tb{background:rgba(17,24,39,.9);border:1px solid rgba(255,215,0,.13);color:var(--dim);padding:10px 22px;border-radius:40px;font-family:'Rajdhani',sans-serif;font-weight:600;font-size:.87rem;letter-spacing:1.5px;cursor:pointer;transition:.3s;display:flex;align-items:center;gap:6px;}
+.tb:hover{border-color:rgba(255,215,0,.48);color:var(--gold)}
+.tb.active{background:linear-gradient(135deg,rgba(255,215,0,.13),rgba(124,58,237,.13));border-color:var(--gold);color:var(--gold);box-shadow:0 0 17px rgba(255,215,0,.13);}
+
+/* CARDS */
+.msec{padding:25px 5% 72px}
+.fgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(282px,1fr));gap:23px;max-width:1400px;margin:0 auto;}
+.fc{background:linear-gradient(145deg,#0d1117,#0a0d14);border:1px solid rgba(255,215,0,.1);border-radius:21px;overflow:hidden;transition:transform .35s,box-shadow .35s;animation:cr .5s ease both;}
+@keyframes cr{from{opacity:0;transform:translateY(22px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.fc:hover{transform:translateY(-10px);box-shadow:0 22px 68px rgba(0,0,0,.54),0 0 0 1px rgba(255,215,0,.24);}
+.ciw{position:relative;height:208px;overflow:hidden;}
+.ciw img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.82) saturate(1.15);}
+.fc:hover .ciw img{transform:scale(1.1)}
+.ciw::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(17,24,39,.87) 100%);}
+.cbadge{position:absolute;top:11px;left:11px;z-index:2;padding:4px 12px;border-radius:20px;font-size:.69rem;font-weight:700;letter-spacing:1.2px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;}
+.cbadge.hot{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff}
+.cbadge.new-t{background:linear-gradient(135deg,var(--vl),var(--violet));color:#fff}
+.clike{position:absolute;top:11px;right:11px;z-index:2;background:rgba(10,15,30,.64);backdrop-filter:blur(4px);border:none;color:var(--dim);width:35px;height:35px;border-radius:50%;font-size:1.05rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;}
+.clike:hover,.clike.liked{color:#ef4444;transform:scale(1.2)}
+.cbody{padding:16px 16px 18px}
+.ccat{color:var(--vl);font-size:.69rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.cname{font-family:'Playfair Display',serif;font-size:1.16rem;color:#fff;margin-bottom:4px;line-height:1.3;}
+.cdesc{font-size:.81rem;color:var(--dim);line-height:1.54;margin-bottom:10px;}
+.crat{display:flex;align-items:center;gap:5px;margin-bottom:12px;}
+.stars{color:var(--gold);font-size:.91rem;letter-spacing:1px}
+.rn{font-size:.82rem;color:var(--dim);font-weight:700}.rc{font-size:.72rem;color:#475569}
+.cfoot{display:flex;align-items:center;justify-content:space-between;}
+.cprice{font-family:'Playfair Display',serif;font-size:1.42rem;color:var(--gold);text-shadow:var(--gg);}
+.cprice small{font-size:.69rem;color:var(--dim);font-family:'Rajdhani',sans-serif;}
+.obtn{background:linear-gradient(135deg,var(--violet),var(--vl));color:#fff;border:none;padding:9px 18px;border-radius:28px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.82rem;letter-spacing:1px;cursor:pointer;transition:.3s;}
+.obtn:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;box-shadow:var(--gg);transform:scale(1.05);}
+
+/* ===================== HOOKAH SECTION ===================== */
+#hookah-section{display:none;position:relative;overflow:hidden;}
+#hookah-section.active{display:block;}
+
+/* HOOKAH COVER PAGE */
+.hk-cover{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#050810;}
+
+/* Animated smoke background */
+.smoke-bg{position:absolute;inset:0;overflow:hidden;}
+.smoke-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;filter:blur(2px) saturate(1.8);animation:smokeFade 8s ease-in-out infinite;}
+.smoke-img:nth-child(2){animation-delay:-4s;opacity:.12;}
+
+/* Floating smoke particles */
+.smoke-particles{position:absolute;inset:0;pointer-events:none;}
+.sp{position:absolute;bottom:-60px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);animation:smokeRise linear infinite;}
+.sp:nth-child(1){width:80px;height:80px;left:10%;animation-duration:8s;animation-delay:0s;}
+.sp:nth-child(2){width:120px;height:120px;left:25%;animation-duration:11s;animation-delay:2s;}
+.sp:nth-child(3){width:60px;height:60px;left:45%;animation-duration:9s;animation-delay:1s;}
+.sp:nth-child(4){width:100px;height:100px;left:65%;animation-duration:13s;animation-delay:3s;}
+.sp:nth-child(5){width:70px;height:70px;left:80%;animation-duration:10s;animation-delay:1.5s;}
+.sp:nth-child(6){width:90px;height:90px;left:55%;animation-duration:12s;animation-delay:4s;}
+.sp:nth-child(7){width:50px;height:50px;left:35%;animation-duration:7s;animation-delay:2.5s;}
+.sp:nth-child(8){width:110px;height:110px;left:70%;animation-duration:14s;animation-delay:0.5s;}
+@keyframes smokeRise{
+  0%{transform:translateY(0) scale(1);opacity:.7;}
+  50%{transform:translateY(-50vh) scale(2.5) translateX(30px);opacity:.3;}
+  100%{transform:translateY(-110vh) scale(4) translateX(-20px);opacity:0;}
+}
+
+/* Neon glow rings */
+.glow-ring{position:absolute;border-radius:50%;border:1px solid rgba(168,85,247,.2);animation:ringPulse 4s ease-in-out infinite;}
+.glow-ring:nth-child(1){width:300px;height:300px;top:20%;left:10%;animation-delay:0s;}
+.glow-ring:nth-child(2){width:500px;height:500px;top:-10%;right:-5%;animation-delay:1s;border-color:rgba(255,215,0,.1);}
+.glow-ring:nth-child(3){width:200px;height:200px;bottom:10%;left:60%;animation-delay:2s;}
+@keyframes ringPulse{
+  0%,100%{transform:scale(1);opacity:.3;}
+  50%{transform:scale(1.1);opacity:.7;}
+}
+
+/* Cover content */
+.hk-cover-content{position:relative;z-index:10;text-align:center;padding:0 24px;max-width:850px;}
+.hk-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.4);color:var(--vl);padding:7px 22px;border-radius:30px;font-size:.72rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;animation:gp 3s infinite;}
+.hk-title{font-family:'Cinzel Decorative',serif;font-size:clamp(2rem,6vw,5rem);line-height:1.1;margin-bottom:14px;background:linear-gradient(135deg,#fff 20%,var(--vl) 50%,var(--gold) 80%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none;}
+.hk-subtitle{font-family:'Playfair Display',serif;font-style:italic;font-size:clamp(.95rem,1.8vw,1.25rem);color:rgba(226,232,240,.75);max-width:560px;margin:0 auto 14px;line-height:1.7;}
+.hk-tagline{font-size:.78rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:34px;opacity:.8;}
+.hk-cover-stats{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:36px;}
+.hkst{text-align:center;}
+.hkst-n{font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);text-shadow:var(--gg);display:block;}
+.hkst-l{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--dim);}
+.hk-cover-btn{background:linear-gradient(135deg,var(--vl),var(--violet));color:#fff;border:none;padding:14px 40px;border-radius:40px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;cursor:pointer;transition:.3s;text-transform:uppercase;box-shadow:0 0 30px rgba(168,85,247,.4);}
+.hk-cover-btn:hover{transform:translateY(-4px);box-shadow:0 0 50px rgba(168,85,247,.7);}
+
+/* Hookah pipe SVG animation */
+.hk-pipe-wrap{margin:0 auto 30px;width:80px;height:100px;position:relative;}
+.pipe-svg{width:80px;height:100px;}
+.smoke-curl{animation:smokeCurl 3s ease-in-out infinite;}
+@keyframes smokeCurl{
+  0%{transform:translateY(0) scaleX(1);opacity:.9;}
+  50%{transform:translateY(-15px) scaleX(1.4);opacity:.5;}
+  100%{transform:translateY(-30px) scaleX(.8);opacity:0;}
+}
+
+/* ---- HOOKAH FLAVORS SECTION ---- */
+.hk-flavors{padding:60px 5% 80px;background:linear-gradient(180deg,#050810 0%,#0a0f1e 100%);position:relative;}
+.hk-flavors::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(124,58,237,.15),transparent);pointer-events:none;}
+.hk-sec-hdr{text-align:center;margin-bottom:48px;}
+.hk-sec-ey{color:var(--vl);font-size:.72rem;letter-spacing:4px;text-transform:uppercase;margin-bottom:8px;display:block;}
+.hk-sec-t{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.5rem);background:linear-gradient(135deg,#fff 40%,var(--vl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;}
+.hk-divider{width:60px;height:2px;background:linear-gradient(to right,var(--vl),var(--gold));border-radius:2px;margin:0 auto;}
+
+/* Flavor grid */
+.hk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:22px;max-width:1350px;margin:0 auto;}
+.hk-card{background:linear-gradient(145deg,#0d1322,#111827);border:1px solid rgba(168,85,247,.18);border-radius:22px;overflow:hidden;transition:transform .4s,box-shadow .4s;cursor:pointer;position:relative;}
+.hk-card:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 28px 70px rgba(0,0,0,.6),0 0 0 1px rgba(168,85,247,.4),0 0 40px rgba(168,85,247,.2);}
+
+/* Animated smoke on hover */
+.hk-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:60%;background:linear-gradient(to top,rgba(124,58,237,.05),transparent);opacity:0;transition:opacity .4s;z-index:1;}
+.hk-card:hover::before{opacity:1;}
+
+.hk-card-img{position:relative;height:195px;overflow:hidden;}
+.hk-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.75) saturate(1.3);}
+.hk-card:hover .hk-card-img img{transform:scale(1.12);}
+.hk-card-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 40%,rgba(13,19,34,.9) 100%);}
+
+/* Smoke overlay on hover */
+.hk-smoke-overlay{position:absolute;inset:0;pointer-events:none;z-index:2;}
+.hk-smoke-p{position:absolute;bottom:0;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.25),transparent 70%);opacity:0;transition:opacity .3s;}
+.hk-card:hover .hk-smoke-p{animation:cardSmoke 2s ease-out infinite;}
+.hk-smoke-p:nth-child(1){width:40px;height:40px;left:20%;animation-delay:0s !important;}
+.hk-smoke-p:nth-child(2){width:30px;height:30px;left:50%;animation-delay:.5s !important;}
+.hk-smoke-p:nth-child(3){width:50px;height:50px;left:70%;animation-delay:1s !important;}
+@keyframes cardSmoke{
+  0%{transform:translateY(0) scale(1);opacity:.8;}
+  100%{transform:translateY(-80px) scale(3);opacity:0;}
+}
+
+.hk-flavor-badge{position:absolute;top:12px;left:12px;z-index:3;padding:4px 13px;border-radius:20px;font-size:.68rem;font-weight:700;letter-spacing:1px;}
+.flv-badge-popular{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;}
+.flv-badge-new{background:linear-gradient(135deg,var(--vl),var(--violet));color:#fff;}
+.flv-badge-special{background:linear-gradient(135deg,#10b981,#059669);color:#fff;}
+.flv-badge-premium{background:linear-gradient(135deg,#ef4444,#b91c1c);color:#fff;}
+
+.hk-flavor-emoji{position:absolute;top:12px;right:12px;z-index:3;font-size:1.6rem;filter:drop-shadow(0 2px 8px rgba(0,0,0,.5));}
+
+.hk-card-body{padding:16px 18px 20px;position:relative;z-index:2;}
+.hk-flavor-name{font-family:'Playfair Display',serif;font-size:1.18rem;color:#fff;margin-bottom:4px;}
+.hk-flavor-sub{font-size:.75rem;color:var(--vl);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;}
+.hk-flavor-desc{font-size:.8rem;color:var(--dim);line-height:1.55;margin-bottom:12px;}
+
+/* Details row */
+.hk-details-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.hk-detail-pill{display:flex;align-items:center;gap:4px;background:rgba(168,85,247,.1);border:1px solid rgba(168,85,247,.2);color:rgba(226,232,240,.75);padding:3px 10px;border-radius:20px;font-size:.7rem;}
+
+.hk-card-foot{display:flex;align-items:center;justify-content:space-between;}
+.hk-price{font-family:'Playfair Display',serif;font-size:1.35rem;color:var(--gold);text-shadow:var(--gg);}
+.hk-price small{font-size:.65rem;color:var(--dim);font-family:'Rajdhani',sans-serif;}
+.hk-obtn{background:linear-gradient(135deg,var(--vl),var(--violet));color:#fff;border:none;padding:8px 16px;border-radius:25px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:.8rem;cursor:pointer;transition:.3s;}
+.hk-obtn:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;box-shadow:var(--gg);}
+
+/* Hookah Experience Info */
+.hk-experience{padding:50px 5%;background:linear-gradient(135deg,rgba(124,58,237,.08),rgba(255,215,0,.04));border-top:1px solid rgba(168,85,247,.15);border-bottom:1px solid rgba(168,85,247,.15);}
+.hk-exp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;max-width:1000px;margin:30px auto 0;}
+.hk-exp-card{text-align:center;padding:24px 16px;background:rgba(255,255,255,.03);border:1px solid rgba(168,85,247,.15);border-radius:16px;transition:.3s;}
+.hk-exp-card:hover{border-color:rgba(168,85,247,.4);background:rgba(168,85,247,.06);}
+.hk-exp-icon{font-size:2.2rem;margin-bottom:10px;display:block;}
+.hk-exp-title{font-family:'Playfair Display',serif;font-size:1rem;color:#fff;margin-bottom:5px;}
+.hk-exp-desc{font-size:.78rem;color:var(--dim);line-height:1.55;}
+
+/* POPUP */
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(10px);z-index:900;display:none;align-items:center;justify-content:center;padding:17px;}
+.ov.show{display:flex;animation:fo .25s ease}
+@keyframes fo{from{opacity:0}to{opacity:1}}
+.popup{background:linear-gradient(145deg,#0d1117,#06080f);border:1px solid rgba(255,215,0,.18);border-radius:23px;width:100%;max-width:486px;padding:30px;position:relative;animation:pi .4s cubic-bezier(.34,1.56,.64,1) both;box-shadow:0 40px 88px rgba(0,0,0,.85),0 0 60px rgba(255,215,0,.04);max-height:90vh;overflow-y:auto;}
+@keyframes pi{from{opacity:0;transform:scale(.82) translateY(22px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.pcl{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.06);border:none;color:var(--dim);width:33px;height:33px;border-radius:50%;font-size:1.15rem;cursor:pointer;transition:.3s;display:flex;align-items:center;justify-content:center;}
+.pcl:hover{background:rgba(239,68,68,.2);color:#ef4444}
+.ph{margin-bottom:17px;padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.07)}
+.pib{font-size:2rem;margin-bottom:4px}.pt{font-family:'Playfair Display',serif;font-size:1.42rem;color:#fff;margin-bottom:1px;}
+.ps{color:var(--dim);font-size:.84rem}
+.pi2{display:flex;align-items:center;gap:12px;padding:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06);border-radius:12px;margin-bottom:10px;}
+.piimg{width:60px;height:60px;border-radius:10px;object-fit:cover;flex-shrink:0}
+.pii{flex:1}.pin{color:#fff;font-weight:600;margin-bottom:2px;font-size:.91rem}.pip{color:var(--gold);font-size:.87rem;font-weight:700}
+.pqty{display:flex;align-items:center;gap:8px;background:rgba(255,215,0,.06);border:1px solid rgba(255,215,0,.2);border-radius:20px;padding:4px 10px;}
+.qb{background:none;border:none;color:var(--gold);font-size:1.2rem;cursor:pointer;width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.2s;}
+.qb:hover{background:rgba(255,215,0,.15)}.qv{color:#fff;font-weight:700;min-width:19px;text-align:center}
+.ptot{display:flex;justify-content:space-between;align-items:center;padding:12px 0;margin-top:4px;border-top:1px solid rgba(255,255,255,.07);}
+.ptl{color:var(--dim);font-size:.87rem}
+.pta{font-family:'Playfair Display',serif;font-size:1.82rem;color:var(--gold);text-shadow:var(--gg);}
+.pcnf{width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;border:none;padding:13px;border-radius:12px;font-family:'Rajdhani',sans-serif;font-weight:700;font-size:1rem;letter-spacing:2px;cursor:pointer;margin-top:12px;transition:.3s;text-transform:uppercase;}
+.pcnf:hover{box-shadow:var(--gg);transform:translateY(-2px)}
+.pnote{text-align:center;font-size:.76rem;color:var(--dim);margin-top:8px;}
+.sw{text-align:center}.sbi{font-size:3.7rem;animation:sba .5s ease}
+@keyframes sba{from{transform:scale(0) rotate(-200deg)}to{transform:scale(1) rotate(0)}}
+
+/* FOOTER */
+footer{background:linear-gradient(0deg,rgba(255,215,0,.03),transparent);border-top:1px solid rgba(255,215,0,.1);padding:53px 5% 24px;}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(212px,1fr));gap:36px;max-width:1400px;margin:0 auto 36px;}
+.flogo{font-family:'Cinzel Decorative',serif;font-size:.9rem;color:var(--gold);text-shadow:var(--gg);margin-bottom:12px;display:block;}
+.ftag{color:var(--dim);font-size:.86rem;line-height:1.7;margin-bottom:17px;}
+.socs{display:flex;gap:8px;flex-wrap:wrap}
+.sb{width:37px;height:37px;border-radius:8px;background:rgba(255,215,0,.07);border:1px solid rgba(255,215,0,.16);display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1rem;cursor:pointer;transition:.3s;text-decoration:none;}
+.sb:hover{background:var(--gold);color:#0a0f1e;box-shadow:var(--gg)}
+.fh{color:var(--gold);font-size:.72rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:15px;display:flex;align-items:center;gap:6px;}
+.ful{list-style:none}
+.ful li{color:var(--dim);padding:5px 0;font-size:.87rem;border-bottom:1px solid rgba(255,255,255,.04);display:flex;align-items:center;gap:6px;cursor:pointer;transition:color .3s;}
+.ful li:hover{color:var(--gold)}.lic{color:var(--vl)}
+.cr{display:flex;align-items:flex-start;gap:10px;padding:6px 0;color:var(--dim);font-size:.85rem;}
+.ci{width:33px;height:33px;border-radius:7px;background:rgba(124,58,237,.11);border:1px solid rgba(124,58,237,.22);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+.ob{display:inline-flex;align-items:center;gap:8px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.33);color:var(--green);padding:9px 19px;border-radius:28px;font-weight:700;letter-spacing:2px;font-size:.87rem;margin-top:12px;animation:gg2 2.5s ease-in-out infinite;}
+@keyframes gg2{0%,100%{box-shadow:0 0 7px rgba(16,185,129,.22)}50%{box-shadow:0 0 24px rgba(16,185,129,.5),0 0 50px rgba(16,185,129,.13)}}
+.odot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:op 1.4s infinite;}
+@keyframes op{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.55);opacity:.6}}
+.fbot{max-width:1400px;margin:0 auto;padding-top:20px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:9px;}
+.fbot p{color:#475569;font-size:.81rem}.fbot span{color:var(--gold)}
+
+/* FLOAT CART */
+.fcart{position:fixed;bottom:24px;right:24px;z-index:300;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#0a0f1e;width:56px;height:56px;border-radius:50%;border:none;font-size:1.38rem;cursor:pointer;box-shadow:0 8px 28px rgba(255,215,0,.44);transition:.3s;display:flex;align-items:center;justify-content:center;}
+.fcart:hover{transform:scale(1.1);box-shadow:0 12px 42px rgba(255,215,0,.6)}
+.cb{position:absolute;top:-4px;right:-4px;background:#ef4444;color:#fff;width:20px;height:20px;border-radius:50%;font-size:.66rem;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid #0a0f1e;}
+.toast{position:fixed;top:81px;right:15px;z-index:1000;background:linear-gradient(135deg,#111827,#0a0f1e);border:1px solid rgba(16,185,129,.38);color:#fff;padding:11px 16px;border-radius:12px;display:flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;transform:translateX(130%);transition:.45s cubic-bezier(.34,1.56,.64,1);box-shadow:0 10px 28px rgba(0,0,0,.44);max-width:300px;}
+.toast.show{transform:translateX(0)}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta,.nav-ph{display:none}.hbg{display:flex}
+  .sarrow{width:37px;height:37px;font-size:1.15rem}.scnt{display:none}
+  .hero-name{font-size:1.75rem}.sbar{gap:3px}
+  .fbot{justify-content:center;text-align:center}
+  .hk-cover-stats{gap:16px;}
+}
+@media(max-width:480px){.hbtns{flex-direction:column;align-items:center}.btg,.bto{width:205px;text-align:center}}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Vansh<em>•</em>Cafe</div>
+  <ul class="nav-links">
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hookah-section">Hookah</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-ph">📞 8381975388</div>
+    <button class="nav-cta" onclick="scrollToMenu()">Book Table</button>
+  </div>
+  <div class="hbg"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO SLIDER - 12 Images, 2s auto-swap -->
+<section class="hero" id="home">
+  <div class="hero-slide active" data-label="Classic Smash Burger">
+    <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1920&q=90&fit=crop" alt="Burger" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Neapolitan Wood-Fire Pizza">
+    <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=1920&q=90&fit=crop" alt="Pizza" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Handi Mutton Biryani">
+    <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=1920&q=90&fit=crop" alt="Biryani" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Steam Momos Platter">
+    <img src="https://images.unsplash.com/photo-1606525497574-5a6c72ef9609?w=1920&q=90&fit=crop" alt="Momos" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Tandoori Chicken Platter">
+    <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=1920&q=90&fit=crop" alt="Tandoori" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Premium Hookah Lounge">
+    <img src="https://images.unsplash.com/photo-1527867093997-50f75f1ab9a9?w=1920&q=90&fit=crop" alt="Hookah" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Dal Makhani Royale">
+    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=1920&q=90&fit=crop" alt="Dal Makhani" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Loaded Fries Supreme">
+    <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=1920&q=90&fit=crop" alt="Fries" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Paneer Butter Masala">
+    <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=1920&q=90&fit=crop" alt="Paneer" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Gourmet Dessert Platter">
+    <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=1920&q=90&fit=crop" alt="Dessert" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="BBQ Chicken Wrap">
+    <img src="https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=1920&q=90&fit=crop" alt="Wrap" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-slide" data-label="Raj Kachori Street Special">
+    <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=1920&q=90&fit=crop" alt="Kachori" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1920&q=90&fit=crop'"/>
+  </div>
+  <div class="hero-ov"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ Premium Dining &amp; Hookah Lounge ✦</div>
+    <div class="ndeco">
+      <div class="nline"></div><div class="diam"></div><div class="nline r"></div>
+    </div>
+    <h1 class="hero-name">
+      Vansh Pratap Singh
+      <span class="gw">Cafe</span>
+    </h1>
+    <p class="hero-tag">"This restaurant provides the best taste<br/>and premium service in town."</p>
+    <div class="hbtns">
+      <button class="btg" onclick="scrollToMenu()">🍽️ Explore Menu</button>
+      <button class="bto" onclick="scrollToContact()">📞 Call: 8381975388</button>
+    </div>
+  </div>
+  <div class="slabel" id="slabel">Classic Smash Burger</div>
+  <button class="sarrow prev" onclick="chg(-1)">&#8249;</button>
+  <button class="sarrow next" onclick="chg(1)">&#8250;</button>
+  <div class="sdots" id="sdots"></div>
+  <div class="scnt"><strong id="scur">1</strong> / <span id="stot">12</span></div>
+  <div class="spbar"><div class="spfill" id="spf"></div></div>
+  <div class="srhint">Scroll</div>
+</section>
+
+<!-- STATS -->
+<div class="sbar">
+  <div class="si"><span class="sn" data-target="5000">0</span><span class="sl">Happy Customers</span></div>
+  <div class="si"><span class="sn" data-target="80">0</span><span class="sl">Menu Items</span></div>
+  <div class="si"><span class="sn" data-target="4" data-suffix=".9 ⭐">0</span><span class="sl">Avg Rating</span></div>
+  <div class="si"><span class="sn" data-target="10">0</span><span class="sl">Years of Excellence</span></div>
+</div>
+
+<!-- MENU TABS HEADER -->
+<section id="menu">
+  <div class="shdr">
+    <span class="sey">✦ Our Specialties ✦</span>
+    <h2 class="st">Crafted With Passion</h2>
+    <div class="sdiv"></div>
+  </div>
+  <div class="tabs">
+    <button class="tb active" onclick="filt('all',this)"><span>🌟</span> All Items</button>
+    <button class="tb" onclick="filt('fastfood',this)"><span>🍔</span> Fast Food</button>
+    <button class="tb" onclick="filt('desi',this)"><span>🍛</span> Desi Specials</button>
+    <button class="tb" onclick="filt('maincourse',this)"><span>🍽️</span> Main Course</button>
+    <button class="tb" id="hookah-tab-btn" onclick="showHookahSection(this)"><span>💨</span> Hookah Lounge</button>
+  </div>
+</section>
+
+<!-- FOOD GRID (normal items) -->
+<section class="msec" id="food-grid-sec"><div class="fgrid" id="fgrid"></div></section>
+
+<!-- ==================== HOOKAH SECTION ==================== -->
+<section id="hookah-section">
+
+  <!-- COVER PAGE -->
+  <div class="hk-cover">
+    <div class="smoke-bg">
+      <img class="smoke-img" src="https://images.unsplash.com/photo-1527867093997-50f75f1ab9a9?w=1920&q=80&fit=crop" alt="hookah bg"/>
+      <img class="smoke-img" src="https://images.unsplash.com/photo-1585136917228-e6e86c48fde5?w=1920&q=80&fit=crop" alt="hookah bg2" style="animation-delay:-4s"/>
+    </div>
+
+    <!-- Floating smoke particles -->
+    <div class="smoke-particles">
+      <div class="sp"></div><div class="sp"></div><div class="sp"></div>
+      <div class="sp"></div><div class="sp"></div><div class="sp"></div>
+      <div class="sp"></div><div class="sp"></div>
+    </div>
+
+    <!-- Glowing rings -->
+    <div class="glow-ring"></div>
+    <div class="glow-ring"></div>
+    <div class="glow-ring"></div>
+
+    <div class="hk-cover-content">
+      <div class="hk-badge">💨 Premium Hookah Lounge Experience</div>
+      
+      <!-- Animated hookah pipe SVG -->
+      <div class="hk-pipe-wrap">
+        <svg class="pipe-svg" viewBox="0 0 80 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Smoke curls -->
+          <ellipse class="smoke-curl" cx="40" cy="10" rx="12" ry="7" fill="rgba(255,255,255,0.18)" style="animation-delay:0s"/>
+          <ellipse class="smoke-curl" cx="48" cy="3" rx="8" ry="5" fill="rgba(255,255,255,0.12)" style="animation-delay:.6s"/>
+          <ellipse class="smoke-curl" cx="33" cy="6" rx="6" ry="4" fill="rgba(168,85,247,0.25)" style="animation-delay:1.2s"/>
+          <!-- Pipe body -->
+          <rect x="32" y="18" width="16" height="45" rx="8" fill="url(#pipeGrad)"/>
+          <rect x="20" y="58" width="40" height="10" rx="5" fill="url(#baseGrad)"/>
+          <rect x="28" y="68" width="24" height="6" rx="3" fill="#1e1b4b"/>
+          <rect x="24" y="74" width="32" height="8" rx="4" fill="url(#baseGrad)"/>
+          <circle cx="40" cy="35" r="6" fill="rgba(255,215,0,0.3)" stroke="#FFD700" stroke-width="1"/>
+          <defs>
+            <linearGradient id="pipeGrad" x1="32" y1="18" x2="48" y2="63" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#a855f7"/>
+              <stop offset="1" stop-color="#7c3aed"/>
+            </linearGradient>
+            <linearGradient id="baseGrad" x1="20" y1="58" x2="60" y2="82" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#FFD700"/>
+              <stop offset="1" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <h1 class="hk-title">Hookah Lounge</h1>
+      <p class="hk-subtitle">"Step into a world of rich aromas, silky clouds & unforgettable flavours — crafted for the connoisseur."</p>
+      <div class="hk-tagline">✦ 12+ Exotic Flavours · Premium Tobacco · Chilled Atmosphere ✦</div>
+
+      <div class="hk-cover-stats">
+        <div class="hkst"><span class="hkst-n">12+</span><span class="hkst-l">Flavours</span></div>
+        <div class="hkst"><span class="hkst-n">₹449</span><span class="hkst-l">Starting at</span></div>
+        <div class="hkst"><span class="hkst-n">90 min</span><span class="hkst-l">Session</span></div>
+        <div class="hkst"><span class="hkst-n">4.9 ⭐</span><span class="hkst-l">Rated</span></div>
+      </div>
+
+      <button class="hk-cover-btn" onclick="document.getElementById('hk-flavors-sec').scrollIntoView({behavior:'smooth'})">
+        💨 Explore Flavours ↓
+      </button>
+    </div>
+  </div>
+
+  <!-- HOOKAH EXPERIENCE INFO -->
+  <div class="hk-experience">
+    <div class="shdr" style="padding-top:0">
+      <span class="hk-sec-ey">✦ The Experience ✦</span>
+      <h2 class="hk-sec-t">Why Our Hookah is Different</h2>
+      <div class="hk-divider"></div>
+    </div>
+    <div class="hk-exp-grid">
+      <div class="hk-exp-card">
+        <span class="hk-exp-icon">🪨</span>
+        <div class="hk-exp-title">Premium Coal</div>
+        <div class="hk-exp-desc">Natural coconut shell coal — no chemicals, pure heat, longer sessions.</div>
+      </div>
+      <div class="hk-exp-card">
+        <span class="hk-exp-icon">🌿</span>
+        <div class="hk-exp-title">Egyptian Tobacco</div>
+        <div class="hk-exp-desc">Imported Fumari & Al Fakher tobacco for rich, authentic flavour clouds.</div>
+      </div>
+      <div class="hk-exp-card">
+        <span class="hk-exp-icon">🧊</span>
+        <div class="hk-exp-title">Ice Chamber</div>
+        <div class="hk-exp-desc">Chilled ice tips for ultra-smooth, cool smoke on every exhale.</div>
+      </div>
+      <div class="hk-exp-card">
+        <span class="hk-exp-icon">🎵</span>
+        <div class="hk-exp-title">Lounge Vibe</div>
+        <div class="hk-exp-desc">Ambient lighting, chill music, and private seating areas available.</div>
+      </div>
+      <div class="hk-exp-card">
+        <span class="hk-exp-icon">⏱️</span>
+        <div class="hk-exp-title">90 Min Session</div>
+        <div class="hk-exp-desc">Generous 90-minute sessions with coal management included.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FLAVOURS GRID -->
+  <div class="hk-flavors" id="hk-flavors-sec">
+    <div class="hk-sec-hdr">
+      <span class="hk-sec-ey">✦ Choose Your Flavour ✦</span>
+      <h2 class="hk-sec-t">12+ Signature Hookah Flavours</h2>
+      <div class="hk-divider"></div>
+    </div>
+    <div class="hk-grid" id="hk-grid"></div>
+  </div>
+
+</section>
+<!-- ==================== /HOOKAH SECTION ==================== -->
+
+<!-- POPUP -->
+<div class="ov" id="orderOv" onclick="cob(event)">
+  <div class="popup"><button class="pcl" onclick="cpop()">✕</button><div id="pc"></div></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="fg" id="contact">
+    <div>
+      <span class="flogo">Vansh Pratap Singh Cafe</span>
+      <p class="ftag">Where every dish is a story of passion, tradition &amp; unforgettable taste. Come hungry, leave happy.</p>
+      <div class="socs">
+        <a href="#" class="sb">📘</a><a href="#" class="sb">📸</a><a href="#" class="sb">🐦</a><a href="#" class="sb">▶️</a>
+      </div>
+    </div>
+    <div>
+      <div class="fh">⚡ Quick Links</div>
+      <ul class="ful">
+        <li><span class="lic">›</span> Our Full Menu</li>
+        <li><span class="lic">›</span> Hookah Lounge</li>
+        <li><span class="lic">›</span> Private Events</li>
+        <li><span class="lic">›</span> Catering Service</li>
+        <li><span class="lic">›</span> Loyalty Program</li>
+      </ul>
+    </div>
+    <div>
+      <div class="fh">🕐 Timings</div>
+      <ul class="ful">
+        <li><span class="lic">📅</span> Mon–Fri: 11 AM – 2 AM</li>
+        <li><span class="lic">📅</span> Sat–Sun: 10 AM – 3 AM</li>
+        <li><span class="lic">🎉</span> Holidays: All Day Open</li>
+        <li><span class="lic">🍽️</span> Happy Hours: 3–7 PM</li>
+      </ul>
+      <div class="ob"><div class="odot"></div> OPEN NOW</div>
+    </div>
+    <div>
+      <div class="fh">📬 Contact Us</div>
+      <div class="cr"><div class="ci">📍</div><div>Near City Mall, Ghaziabad,<br/>Uttar Pradesh — 201001</div></div>
+      <div class="cr"><div class="ci">📞</div><div><strong style="color:var(--gold);font-size:1rem">8381975388</strong><br/><span style="font-size:.81rem">+91 91234 56789</span></div></div>
+      <div class="cr"><div class="ci">📧</div><div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a7d1c6c9d4cfc4c6c1c2e7c0cac6cecb89c4c8ca">[email&#160;protected]</a></div></div>
+      <div class="cr"><div class="ci">🌐</div><div>www.vanshcafe.in</div></div>
+    </div>
+  </div>
+  <div class="fbot">
+    <p>© 2025 <span>Vansh Pratap Singh Cafe</span>. All rights reserved.</p>
+    <p>Made with ❤️ in <span>Ghaziabad, UP</span></p>
+  </div>
+</footer>
+
+<button class="fcart" onclick="openCart()">🛒<span class="cb" id="cbadge">0</span></button>
+<div class="toast" id="toast"><span>✅</span><span id="tmsg">Added!</span></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// ==================== MENU DATA (Fixed Images) ====================
+const MD=[
+  {id:1,cat:'fastfood',name:'Classic Smash Burger',desc:'Double smash patty, aged cheddar, caramelised onions, smoky sauce in toasted brioche bun.',price:249,rating:4.8,count:342,badge:'Bestseller',img:'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=88&fit=crop'},
+  {id:2,cat:'fastfood',name:'Loaded Fries Supreme',desc:'Crispy fries loaded with cheese sauce, pickled jalapeños, pulled chicken & fresh chives.',price:179,rating:4.6,count:218,badge:'HOT',bt:'hot',img:'https://images.unsplash.com/photo-1573080496219-bb080dd4f877?w=700&q=88&fit=crop'},
+  {id:3,cat:'fastfood',name:'Neapolitan Wood-Fire Pizza',desc:'Blistered crust, San Marzano tomato base, buffalo mozzarella, torn basil leaves.',price:349,rating:4.9,count:512,badge:"Chef's Pick",img:'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=700&q=88&fit=crop'},
+  {id:4,cat:'fastfood',name:'BBQ Chicken Wrap',desc:'Flame-grilled chicken strips, tangy BBQ sauce, crisp lettuce, tomato in toasted tortilla.',price:199,rating:4.5,count:187,badge:'New',bt:'new-t',img:'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=700&q=88&fit=crop'},
+  {id:5,cat:'desi',name:'Steam Momos Platter',desc:'Hand-folded rice dumplings stuffed with spiced veg/chicken, served with red chilli chutney.',price:149,rating:4.7,count:623,badge:'Bestseller',img:'https://images.unsplash.com/photo-1606525497574-5a6c72ef9609?w=700&q=88&fit=crop'},
+  {id:6,cat:'desi',name:'Pav Bhaji Volcano',desc:'Buttery ladi pav with spicy volcano bhaji, topped with fresh butter, onion & lemon.',price:129,rating:4.8,count:489,badge:'HOT',bt:'hot',img:'https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=700&q=88&fit=crop'},
+  {id:7,cat:'desi',name:'Raj Kachori Bowl',desc:'Giant puri filled with sprouts, thick curd, tamarind chutney, crunchy papdi & sev.',price:119,rating:4.6,count:301,badge:'Street Legend',img:'https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?w=700&q=88&fit=crop'},
+  {id:8,cat:'desi',name:'Butter Chicken Poutine',desc:'Desi-French fusion — crispy fries smothered in butter chicken gravy, cheese curds & coriander.',price:299,rating:4.9,count:167,badge:'Fusion',img:'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=700&q=88&fit=crop'},
+  {id:9,cat:'maincourse',name:'Handi Mutton Biryani',desc:'24hr marinated mutton slow-cooked in dum with saffron basmati. Served with raita & mirchi.',price:399,rating:4.9,count:741,badge:'#1 Dish',img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=700&q=88&fit=crop'},
+  {id:10,cat:'maincourse',name:'Dal Makhani Royale',desc:'Overnight slow-simmered black lentils in rich tomato cream, finished with butter & fenugreek.',price:249,rating:4.7,count:335,badge:'Veg Star',img:'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=700&q=88&fit=crop'},
+  {id:11,cat:'maincourse',name:'Paneer Lababdar',desc:'Silky paneer cubes in a smoky tomato-onion gravy. Served with warm butter naan.',price:279,rating:4.6,count:298,badge:'Veg',img:'https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?w=700&q=88&fit=crop'},
+  {id:12,cat:'maincourse',name:'Tandoori Chicken Platter',desc:'Whole leg & breast marinated 24hrs in spiced yoghurt, char-grilled in our clay tandoor.',price:449,rating:4.8,count:502,badge:'HOT',bt:'hot',img:'https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=700&q=88&fit=crop'},
+];
+
+// ==================== HOOKAH FLAVOURS DATA ====================
+const HOOKAH=[
+  {id:'h1',name:'Double Apple Classic',sub:'Egyptian Origin',emoji:'🍎',desc:'Timeless double apple with premium Al Fakher tobacco. Thick creamy clouds, smooth sweet finish.',price:499,session:'90 min',coal:'Coconut',strength:'Medium',badge:'Most Loved',bt:'flv-badge-popular',rating:4.9,count:850,img:'https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?w=700&q=88&fit=crop'},
+  {id:'h2',name:'Watermelon Mint',sub:'Summer Special',emoji:'🍉',desc:'Juicy watermelon meets cooling fresh mint — the most refreshing hookah experience in town.',price:549,session:'90 min',coal:'Coconut',strength:'Light',badge:'Bestseller',bt:'flv-badge-popular',rating:4.8,count:720,img:'https://images.unsplash.com/photo-1563114773-84221bd62daa?w=700&q=88&fit=crop'},
+  {id:'h3',name:'Pineapple Blast',sub:'Tropical Vibe',emoji:'🍍',desc:'Sweet tropical pineapple with a hint of coconut. Exotic flavour for adventurous souls.',price:499,session:'90 min',coal:'Coconut',strength:'Light-Med',badge:'New',bt:'flv-badge-new',rating:4.7,count:430,img:'https://images.unsplash.com/photo-1490474418585-ba9bad8fd0ea?w=700&q=88&fit=crop'},
+  {id:'h4',name:'Blueberry Chill',sub:'Premium Neon',emoji:'🫐',desc:'Wild blueberry with ice tips — our signature neon hookah setup. Ultra-smooth, chilled clouds.',price:549,session:'90 min',coal:'Coconut',strength:'Medium',badge:'Premium',bt:'flv-badge-premium',rating:4.8,count:620,img:'https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=700&q=88&fit=crop'},
+  {id:'h5',name:'Paan Rose Special',sub:'Desi Fusion',emoji:'🌹',desc:'Fragrant desi paan meets Persian rose — a one-of-a-kind smoke experience. Uniquely Indian.',price:449,session:'90 min',coal:'Natural',strength:'Light',badge:'Desi Vibe',bt:'flv-badge-special',rating:4.6,count:430,img:'https://images.unsplash.com/photo-1487530811015-780a87c38dc9?w=700&q=88&fit=crop'},
+  {id:'h6',name:'Royal Grape Crown',sub:'Exclusive Reserve',emoji:'🍇',desc:'Aged grape on honey base, exclusive to VPS Cafe. Thick clouds, ultra-smooth throat hit.',price:699,session:'90 min',coal:'Coconut',strength:'Strong',badge:'Exclusive',bt:'flv-badge-premium',rating:4.9,count:310,img:'https://images.unsplash.com/photo-1537640538966-79f369143f8f?w=700&q=88&fit=crop'},
+  {id:'h7',name:'Strawberry Lemonade',sub:'Sweet & Tangy',emoji:'🍓',desc:'Fresh strawberry sweetness with a zingy lemon kick. Perfect for sunny afternoons.',price:499,session:'90 min',coal:'Natural',strength:'Light',badge:'Popular',bt:'flv-badge-popular',rating:4.7,count:520,img:'https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?w=700&q=88&fit=crop'},
+  {id:'h8',name:'Mango Tango',sub:'Summer Hit',emoji:'🥭',desc:'Ripe Alphonso mango flavour with sweet tropical notes. Our summer season favourite.',price:449,session:'90 min',coal:'Coconut',strength:'Light-Med',badge:'Seasonal',bt:'flv-badge-special',rating:4.6,count:380,img:'https://images.unsplash.com/photo-1553279768-865429fa0078?w=700&q=88&fit=crop'},
+  {id:'h9',name:'Mint Mojito Rush',sub:'Ice & Fresh',emoji:'🌿',desc:'Pure spearmint with crushed ice tips — the coolest, most refreshing smoke you will ever try.',price:449,session:'90 min',coal:'Coconut',strength:'Light',badge:'Cooling',bt:'flv-badge-special',rating:4.8,count:660,img:'https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=700&q=88&fit=crop'},
+  {id:'h10',name:'Pan Masala Dream',sub:'Classic Indian',emoji:'🌾',desc:'Authentic Indian pan masala flavour — earthy, aromatic, and deeply satisfying for desi lovers.',price:399,session:'90 min',coal:'Natural',strength:'Medium',badge:'Classic',bt:'flv-badge-popular',rating:4.5,count:290,img:'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?w=700&q=88&fit=crop'},
+  {id:'h11',name:'Peach Paradise',sub:'Fruity Deluxe',emoji:'🍑',desc:'Luscious peach with creamy undertones. Smooth, fruity, and endlessly sessionable.',price:499,session:'90 min',coal:'Coconut',strength:'Light',badge:'New',bt:'flv-badge-new',rating:4.6,count:240,img:'https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?w=700&q=88&fit=crop'},
+  {id:'h12',name:'Mixed Fruit Fiesta',sub:'Party Special',emoji:'🍹',desc:'A carnival of tropical fruits — our signature mix of 5 fruits in one epic session.',price:599,session:'90 min',coal:'Coconut',strength:'Medium',badge:'Party Hit',bt:'flv-badge-popular',rating:4.9,count:450,img:'https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=700&q=88&fit=crop'},
+];
+
+// ==================== HERO SLIDER ====================
+(function(){
+  var cur = 0;
+  var slides = document.querySelectorAll('.hero-slide');
+  var dotsWrap = document.getElementById('sdots');
+  var labelEl = document.getElementById('slabel');
+  var curEl = document.getElementById('scur');
+  var totEl = document.getElementById('stot');
+  var barEl = document.getElementById('spf');
+
+  if (!slides || slides.length === 0) return;
+  if (totEl) totEl.textContent = slides.length;
+
+  // Build dots
+  for (var i = 0; i < slides.length; i++) {
+    (function(idx){
+      var dot = document.createElement('div');
+      dot.className = 'dot' + (idx === 0 ? ' active' : '');
+      dot.onclick = function(){ goTo(idx); };
+      if (dotsWrap) dotsWrap.appendChild(dot);
+    })(i);
+  }
+
+  // Preload all images
+  for (var j = 0; j < slides.length; j++) {
+    var img = slides[j].querySelector('img');
+    if (img) { var p = new Image(); p.src = img.src; }
+  }
+
+  function resetBar() {
+    if (!barEl) return;
+    barEl.style.transition = 'none';
+    barEl.style.width = '0%';
+    setTimeout(function(){
+      barEl.style.transition = 'width 1.9s linear';
+      barEl.style.width = '100%';
+    }, 30);
+  }
+
+  function goTo(n) {
+    slides[cur].classList.remove('active');
+    if (dotsWrap && dotsWrap.children[cur]) dotsWrap.children[cur].classList.remove('active');
+    cur = ((n % slides.length) + slides.length) % slides.length;
+    slides[cur].classList.add('active');
+    if (dotsWrap && dotsWrap.children[cur]) dotsWrap.children[cur].classList.add('active');
+    if (labelEl) {
+      labelEl.style.opacity = '0';
+      setTimeout(function(){ labelEl.textContent = slides[cur].dataset.label || ''; labelEl.style.opacity = '1'; }, 280);
+    }
+    if (curEl) curEl.textContent = cur + 1;
+    resetBar();
+  }
+
+  // Expose globally for arrow buttons onclick="chg(-1)" / onclick="chg(1)"
+  window.chg = function(d){ goTo(cur + d); };
+
+  // Always auto-advance every 2s — no pause-on-hover (was causing the bug)
+  setInterval(function(){ goTo(cur + 1); }, 2000);
+  resetBar();
+})();
+
+// ==================== FOOD CARDS ====================
+function sh(r){return '★'.repeat(Math.floor(r))+(r%1>=.5?'½':'')+'☆'.repeat(5-Math.floor(r)-(r%1>=.5?1:0));}
+function cl(c){return {fastfood:'🍔 Fast Food',desi:'🍛 Desi Specials',maincourse:'🍽️ Main Course'}[c]||c;}
+
+function render(items){
+  const g=document.getElementById('fgrid');g.innerHTML='';
+  items.forEach((item,i)=>{
+    const bd=item.badge?`<div class="cbadge ${item.bt||''}">${item.badge}</div>`:'';
+    const d=document.createElement('div');d.className='fc';d.style.animationDelay=(i*.065)+'s';
+    d.innerHTML=`<div class="ciw"><img src="${item.img}" alt="${item.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=700&q=88&fit=crop'"/>${bd}<button class="clike" onclick="lk(this)">🤍</button></div>
+    <div class="cbody"><div class="ccat">${cl(item.cat)}</div><div class="cname">${item.name}</div><div class="cdesc">${item.desc}</div>
+    <div class="crat"><span class="stars">${sh(item.rating)}</span><span class="rn">${item.rating}</span><span class="rc">(${item.count}+ reviews)</span></div>
+    <div class="cfoot"><div class="cprice">₹${item.price}<small>/item</small></div><button class="obtn" onclick="oord(${item.id})">Order Now</button></div></div>`;
+    g.appendChild(d);
+  });
+}
+render(MD);
+
+function filt(cat,btn){
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('food-grid-sec').style.display='block';
+  document.getElementById('hookah-section').classList.remove('active');
+  render(cat==='all'?MD:MD.filter(x=>x.cat===cat));
+}
+function lk(btn){btn.classList.toggle('liked');btn.textContent=btn.classList.contains('liked')?'❤️':'🤍';}
+
+// ==================== HOOKAH SECTION ====================
+function renderHookah(){
+  const g=document.getElementById('hk-grid');g.innerHTML='';
+  HOOKAH.forEach((h,i)=>{
+    const d=document.createElement('div');
+    d.className='hk-card';
+    d.style.animationDelay=(i*.08)+'s';
+    d.style.animation='cr .6s ease both';
+    d.innerHTML=`
+      <div class="hk-card-img">
+        <img src="${h.img}" alt="${h.name}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1527867093997-50f75f1ab9a9?w=700&q=88&fit=crop'"/>
+        <div class="hk-smoke-overlay">
+          <div class="hk-smoke-p"></div>
+          <div class="hk-smoke-p"></div>
+          <div class="hk-smoke-p"></div>
+        </div>
+        <div class="hk-flavor-badge ${h.bt}">${h.badge}</div>
+        <div class="hk-flavor-emoji">${h.emoji}</div>
+      </div>
+      <div class="hk-card-body">
+        <div class="hk-flavor-name">${h.name}</div>
+        <div class="hk-flavor-sub">${h.sub}</div>
+        <div class="hk-flavor-desc">${h.desc}</div>
+        <div class="hk-details-row">
+          <div class="hk-detail-pill">⏱️ ${h.session}</div>
+          <div class="hk-detail-pill">🪨 ${h.coal} Coal</div>
+          <div class="hk-detail-pill">💪 ${h.strength}</div>
+          <div class="hk-detail-pill">⭐ ${h.rating} (${h.count}+)</div>
+        </div>
+        <div class="hk-card-foot">
+          <div class="hk-price">₹${h.price}<small>/session</small></div>
+          <button class="hk-obtn" onclick="oordHookah('${h.id}')">Book Now 💨</button>
+        </div>
+      </div>`;
+    g.appendChild(d);
+  });
+}
+
+function showHookahSection(btn){
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('food-grid-sec').style.display='none';
+  const hs=document.getElementById('hookah-section');
+  hs.classList.add('active');
+  renderHookah();
+  setTimeout(()=>hs.scrollIntoView({behavior:'smooth'}),100);
+}
+
+// ==================== HOOKAH ORDER POPUP ====================
+function oordHookah(hid){
+  const h=HOOKAH.find(x=>x.id===hid);if(!h)return;
+  document.getElementById('pc').innerHTML=`
+    <div class="ph"><div class="pib">💨</div><div class="pt">Book Hookah Session</div><div class="ps">Vansh Pratap Singh Cafe — Lounge</div></div>
+    <div class="pi2" style="border-color:rgba(168,85,247,.25)">
+      <img src="${h.img}" alt="${h.name}" class="piimg"/>
+      <div class="pii">
+        <div class="pin">${h.emoji} ${h.name}</div>
+        <div style="font-size:.72rem;color:var(--vl);letter-spacing:1px;margin-bottom:3px">${h.sub}</div>
+        <div class="pip">₹${h.price} / session</div>
+      </div>
+      <div class="pqty"><button class="qb" onclick="aqh(-1)">−</button><span class="qv" id="hqv">1</span><button class="qb" onclick="aqh(1)">+</button></div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+      <div style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:9px;text-align:center">
+        <div style="font-size:1.2rem">⏱️</div><div style="font-size:.7rem;color:var(--dim)">${h.session}</div>
+      </div>
+      <div style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:9px;text-align:center">
+        <div style="font-size:1.2rem">🪨</div><div style="font-size:.7rem;color:var(--dim)">${h.coal} Coal</div>
+      </div>
+      <div style="background:rgba(168,85,247,.08);border:1px solid rgba(168,85,247,.2);border-radius:10px;padding:9px;text-align:center">
+        <div style="font-size:1.2rem">💪</div><div style="font-size:.7rem;color:var(--dim)">${h.strength}</div>
+      </div>
+    </div>
+    <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:10px;margin-bottom:10px;font-size:.81rem;color:var(--dim)">
+      <strong style="color:var(--vl)">📍 Lounge:</strong> Vansh Cafe, Ghaziabad &nbsp;·&nbsp;<span style="color:var(--gold)">Table booking required</span>
+    </div>
+    <div class="ptot"><span class="ptl">Total Amount</span><span class="pta" id="hta">₹${h.price}</span></div>
+    <button class="pcnf" style="background:linear-gradient(135deg,var(--vl),var(--violet))" onclick="confHookah('${h.id}')">💨 Confirm Hookah Session</button>
+    <p class="pnote">🕐 Session: <strong style="color:var(--gold)">${h.session}</strong> · Coal management included</p>`;
+  window._curHookah=h;
+  spop();
+}
+function aqh(d){if(!window._curHookah)return;const v=document.getElementById('hqv');const n=Math.max(1,parseInt(v.textContent)+d);v.textContent=n;document.getElementById('hta').textContent='₹'+(window._curHookah.price*n);}
+function confHookah(hid){
+  const h=HOOKAH.find(x=>x.id===hid)||window._curHookah;
+  const qty=parseInt(document.getElementById('hqv').textContent);
+  const oid='VPS-HK'+Date.now().toString().slice(-4);
+  
+  // Naya WhatsApp message banate hain jisme hookah booking ki details hongi
+  const msg = `*New Hookah Booking! 💨*\nBooking ID: #${oid}\nFlavor: ${h.name}\nQuantity: ${qty}\nSession: ${h.session}\nTotal: ₹${h.price*qty}\n\nPlease prepare my table!`;
+  
+  // WhatsApp ka URL banate hain jisme humara phone number aur upar wala message URL friendly bankar add hota hai
+  const waUrl = `https://wa.me/918381975388?text=${encodeURIComponent(msg)}`;
+  
+  // Naye tab mein WhatsApp open karte hain taaki customer message bhej sake
+  window.open(waUrl, '_blank');
+
+  document.getElementById('pc').innerHTML=`<div class="sw">
+    <div class="sbi">💨</div>
+    <div class="pt" style="margin-bottom:7px">Session Booked!</div>
+    <p style="color:var(--dim);margin-bottom:16px;font-size:.88rem">Your <strong style="color:var(--vl)">${h.emoji} ${h.name}</strong> session is confirmed!</p>
+    <div style="background:rgba(168,85,247,.09);border:1px solid rgba(168,85,247,.3);border-radius:10px;padding:13px;margin-bottom:16px">
+      <div style="color:var(--vl);font-weight:700;margin-bottom:4px">Booking #${oid}</div>
+      <div style="color:var(--dim);font-size:.79rem">Session: ${h.session} · ${qty} hookah(s)</div>
+      <div style="color:var(--gold);font-size:.82rem;margin-top:4px">Please arrive 10 min early 🕐</div>
+    </div>
+    <button class="pcnf" onclick="cpop()">Continue Browsing</button>
+  </div>`;
+  toast2(`${h.name} session booked! 💨`);
+}
+
+// ==================== FOOD ORDER POPUP ====================
+let cart=[],oi=null;
+function ucb(){document.getElementById('cbadge').textContent=cart.reduce((s,i)=>s+i.qty,0);}
+function oord(id){
+  oi=MD.find(x=>x.id===id);if(!oi)return;
+  const ex=cart.find(c=>c.id===id),qty=ex?ex.qty:1;
+  document.getElementById('pc').innerHTML=`
+    <div class="ph"><div class="pib">🛒</div><div class="pt">Order Summary</div><div class="ps">Vansh Pratap Singh Cafe</div></div>
+    <div class="pi2"><img src="${oi.img}" alt="${oi.name}" class="piimg"/><div class="pii"><div class="pin">${oi.name}</div><div class="pip">₹${oi.price} per item</div></div>
+    <div class="pqty"><button class="qb" onclick="aq(-1)">−</button><span class="qv" id="qv">${qty}</span><button class="qb" onclick="aq(1)">+</button></div></div>
+    <div style="background:rgba(124,58,237,.08);border:1px solid rgba(124,58,237,.2);border-radius:10px;padding:10px;margin-bottom:7px;font-size:.81rem;color:var(--dim)"><strong style="color:var(--vl)">📍 Delivery to:</strong> Ghaziabad, UP &nbsp;·&nbsp;<span style="color:var(--gold);cursor:pointer">Change</span></div>
+    <div class="ptot"><span class="ptl">Total Amount</span><span class="pta" id="ta">₹${oi.price*qty}</span></div>
+    <button class="pcnf" onclick="conf()">🔥 Confirm Order</button>
+    <p class="pnote">🕐 Est. delivery: <strong style="color:var(--gold)">20–35 min</strong> · Free above ₹499</p>`;
+  spop();
+}
+function aq(d){if(!oi)return;const v=document.getElementById('qv');const n=Math.max(1,parseInt(v.textContent)+d);v.textContent=n;document.getElementById('ta').textContent='₹'+(oi.price*n);}
+function conf(){
+  if(!oi)return;
+  const qty=parseInt(document.getElementById('qv').textContent);
+  const ex=cart.find(c=>c.id===oi.id);if(ex)ex.qty=qty;else cart.push({...oi,qty});ucb();
+  const oid='VPS'+Date.now().toString().slice(-5);
+  
+  // Item specific WhatsApp message banane ke liye code
+  const msg = `*New Direct Food Order! 🍽️*\nOrder ID: #${oid}\nItem: ${oi.name}\nQuantity: ${qty}\nTotal Price: ₹${oi.price*qty}\n\nPlease deliver this ASAP!`;
+  
+  // WhatsApp link create karke usme text add kar rahe hain safe format (encodeURIComponent) mein
+  const waUrl = `https://wa.me/918381975388?text=${encodeURIComponent(msg)}`;
+  
+  // Customer ko ek naye tab mein WhatsApp par bhej rahe hain apne number ke sath
+  window.open(waUrl, '_blank');
+
+  document.getElementById('pc').innerHTML=`<div class="sw"><div class="sbi">✅</div><div class="pt" style="margin-bottom:7px">Order Placed!</div><p style="color:var(--dim);margin-bottom:16px;font-size:.88rem">Your <strong style="color:var(--gold)">${oi.name}</strong> is confirmed!</p>
+  <div style="background:rgba(16,185,129,.09);border:1px solid rgba(16,185,129,.27);border-radius:10px;padding:13px;margin-bottom:16px"><div style="color:var(--green);font-weight:700;margin-bottom:2px">Order #${oid}</div><div style="color:var(--dim);font-size:.79rem">Estimated: 20–35 minutes 🛵</div></div>
+  <button class="pcnf" onclick="cpop()">Continue Browsing</button></div>`;
+  toast2(`${oi.name} added! 🎉`);
+}
+function openCart(){
+  if(!cart.length){toast2('Cart is empty! Add items first 🛒');return;}
+  const tot=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  const rows=cart.map(i=>`<div class="pi2"><img src="${i.img}" alt="${i.name}" class="piimg"/><div class="pii"><div class="pin">${i.name}</div><div class="pip">₹${i.price} × ${i.qty} = ₹${i.price*i.qty}</div></div></div>`).join('');
+  document.getElementById('pc').innerHTML=`<div class="ph"><div class="pib">🧾</div><div class="pt">Your Cart</div><div class="ps">${cart.length} item(s) selected</div></div>${rows}
+  <div class="ptot"><span class="ptl">Grand Total</span><span class="pta">₹${tot}</span></div>
+  <button class="pcnf" onclick="fco()">💳 Proceed to Checkout</button><p class="pnote">Secure payment · Multiple options available</p>`;
+  spop();
+}
+function fco(){
+  const oid='VPS-CART'+Date.now().toString().slice(-4);
+  const tot=cart.reduce((s,i)=>s+i.price*i.qty,0);
+  
+  // Cart mein jitne bhi items hain, unn sabki ek simple list banate hain WhatsApp text ke liye
+  const itemsText = cart.map(i => `${i.name} (x${i.qty}) = ₹${i.price * i.qty}`).join('\n');
+  
+  // Cart ka poora message format karke WhatsApp link generate kar rahe hain
+  const msg = `*New Cart Order! 🛒*\nOrder ID: #${oid}\n\n*Items:*\n${itemsText}\n\n*Grand Total: ₹${tot}*\n\nPlease process my order!`;
+  const waUrl = `https://wa.me/918381975388?text=${encodeURIComponent(msg)}`;
+  
+  // Naya WhatsApp tab open karte hain jisse order seedhe cafe owner ke number pe aa jaye
+  window.open(waUrl, '_blank');
+
+  document.getElementById('pc').innerHTML=`<div class="sw"><div class="sbi">🎊</div><div class="pt" style="margin-bottom:9px">Thank You!</div><p style="color:var(--dim);margin-bottom:16px">Order confirmed at Vansh Pratap Singh Cafe!</p><button class="pcnf" onclick="cpop();cart=[];ucb()">🏠 Back to Menu</button></div>`;
+}
+function spop(){document.getElementById('orderOv').classList.add('show');document.body.style.overflow='hidden';}
+function cpop(){document.getElementById('orderOv').classList.remove('show');document.body.style.overflow='';oi=null;}
+function cob(e){if(e.target===document.getElementById('orderOv'))cpop();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')cpop();});
+function toast2(msg){const t=document.getElementById('toast');document.getElementById('tmsg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3200);}
+
+// STATS — fixed
+let statsAnimated=false;
+function animStats(){
+  if(statsAnimated)return;
+  statsAnimated=true;
+  document.querySelectorAll('[data-target]').forEach(el=>{
+    const tgt=parseInt(el.dataset.target),suf=el.dataset.suffix||'+';
+    let n=0,step=Math.max(1,Math.ceil(tgt/80));
+    const t=setInterval(()=>{n=Math.min(n+step,tgt);el.textContent=n+suf;if(n>=tgt)clearInterval(t);},18);
+  });
+}
+const sbarEl=document.querySelector('.sbar');
+if(sbarEl){
+  new IntersectionObserver((entries,obs)=>{
+    entries.forEach(e=>{if(e.isIntersecting){animStats();obs.disconnect();}});
+  },{threshold:0.1}).observe(sbarEl);
+}
+setTimeout(()=>{
+  if(!statsAnimated&&sbarEl){
+    const r=sbarEl.getBoundingClientRect();
+    if(r.top<window.innerHeight)animStats();
+  }
+},500);
+
+function scrollToMenu(){document.getElementById('menu').scrollIntoView({behavior:'smooth'});}
+function scrollToContact(){document.getElementById('contact').scrollIntoView({behavior:'smooth'});}
+
+}); // END DOMContentLoaded
+</script>
+</body>
+</html>
